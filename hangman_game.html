@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman Game</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--neon-primary);
+        text-shadow: var(--neon-shadow);
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .icon {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+        animation: pulse 2s infinite;
+    }
+
+    .retry-btn {
+        background-color: var(--neon-primary);
+        color: var(--dark-bg);
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        margin-top: 1rem;
+        border: 2px solid var(--neon-primary);
+        box-shadow: var(--neon-shadow);
+    }
+
+    .retry-btn:hover {
+        background-color: var(--dark-bg);
+        color: var(--neon-primary);
+    }
+
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Hangman Game</h1>
+    </header>
+    <main>
+      <div class="game-area">
+        <div class="word-display"></div>
+        <div class="hangman-drawing"></div>
+        <div class="input-area">
+          <div class="trophy-container">
+            <div class="trophy">
+              <svg class="trophy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M9 2v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V2"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="letter-input">
+            <input type="text" id="letter-input" maxlength="1" placeholder="ENTER A LETTER">
+            <button id="guess-btn">GUESS</button>
+          </div>
+        </div>
+        <div class="guessed-letters"></div>
+        <div id="result"></div>
+      </div>
+      <div class="game-controls">
+        <button id="reset-btn">NEW GAME</button>
+      </div>
+    </main>
+    <footer>
+      <p>© 2025 Hangman Game - <span id="online-status" class="online">online</span></p>
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('online', () => {
+        window.location.reload();
+    });
+  </script>
+  <script src="script.js"></script>
+  <script src="register-sw.js"></script>
+</body>
+</html>
